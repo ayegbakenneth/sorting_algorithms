@@ -21,3 +21,24 @@ void swap_ints(int *a, int *b)
  *
  * Description: After each swap, print the array.
  */
+void selection_sort(int *array, size_t size)
+{
+	int *luv;
+	size_t i, j;
+
+	if (array == NULL || size < 2)
+		return;
+
+	for (i = 0; i < size - 1; i++)
+	{
+		luv = array + i;
+		for (j = i + 1; j < size; j++)
+			luv = (array[j] < *luv) ? (array + j) : luv;
+
+		if ((array + i) != luv)
+		{
+			swap_ints(array + i, luv);
+			print_array(array, size);
+		}
+	}
+}
